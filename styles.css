@@ -86,7 +86,7 @@ ul {
 
 
 header {
-    background-image: url('path/to/your-image.jpg');
+    background-image: url('HohenZollern.png');
     background-color: var(linear-gradient(135deg, var(--secondary-color), var(--dark-color))); /* Fallback if image fails to load */
     background-position: center;
     background-size: cover;
