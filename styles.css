@@ -7,10 +7,6 @@
     --dark-color: #2c3e50;
     --text-color: #333;
     --text-light: #7f8c8d;
-    --autumn-orange: #E07A5F; 
-    --autumn-gold: #F2CC8F;   
-    --autumn-red: #D62839;    
-    --autumn-brown: #6B4D3B;   
 }
 
 * {
@@ -51,7 +47,6 @@ ul {
 .btn:hover {
     background: #2980b9;
     transform: translateY(-2px);
-    color: var(--autumn-red);
 }
 
 .btn.secondary {
@@ -63,7 +58,6 @@ ul {
 }
 
 .highlight {
-    color: var(--autumn-orange);
     text-shadow: 0 0 10px rgba(224, 122, 95, 0.3);
 }
 
@@ -145,7 +139,7 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--autumn-red);
+    color: white;
 }
 
 .hero {
@@ -156,7 +150,6 @@ nav a:hover {
     align-items: center;
     text-align: center;
     padding: 2rem;
-    color: var(--autumn-gold);
 }
 
 .hero h1 {
@@ -170,7 +163,6 @@ nav a:hover {
     opacity: 0.9;
     max-width: 700px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    color: var(--autumn-gold);
 }
 
 /* About Section */
