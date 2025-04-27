@@ -1,5 +1,6 @@
-/* Base Styles */
+/* ===== Base Styles ===== */
 :root {
+    /* Color Palette */
     --primary-color: #3498db;
     --secondary-color: #2c3e50;
     --accent-color: #e74c3c;
@@ -7,6 +8,11 @@
     --dark-color: #2c3e50;
     --text-color: #333;
     --text-light: #7f8c8d;
+    
+    /* New Highlight Colors */
+    --highlight-primary: #FF9F1C; /* Warm orange */
+    --highlight-secondary: #2EC4B6; /* Teal */
+    --highlight-tertiary: #E07A5F; /* Terra cotta */
 }
 
 * {
@@ -31,60 +37,95 @@ ul {
     list-style: none;
 }
 
-/* Utility Classes */
+/* ===== Typography ===== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ===== Utility Classes ===== */
 .btn {
     display: inline-block;
-    padding: 0.8rem 1.5rem;
-    background: var(--primary-color);
+    padding: 0.8rem 1.8rem;
+    background: var(--highlight-primary);
     color: white;
     border-radius: 5px;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid var(--highlight-primary);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.6s;
+    z-index: -1;
 }
 
 .btn:hover {
-    background: #2980b9;
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    color: white;
+    background: transparent;
+}
+
+.btn:hover::before {
+    left: 100%;
 }
 
 .btn.secondary {
-    background: var(--secondary-color);
+    background: var(--highlight-secondary);
+    border-color: var(--highlight-secondary);
 }
 
 .btn.secondary:hover {
-    background: #1a252f;
+    color: var(--secondary-color);
 }
 
 .highlight {
-    text-shadow: 0 0 10px rgba(224, 122, 95, 0.3);
+    background: linear-gradient(90deg, var(--highlight-primary), var(--highlight-tertiary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .section {
-    padding: 4rem 2rem;
+    padding: 5rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .section h2 {
     text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    font-size: 2.8rem;
     color: var(--dark-color);
     position: relative;
+    font-weight: 700;
 }
 
 .section h2::after {
     content: '';
     display: block;
-    width: 80px;
-    height: 4px;
-    background: var(--primary-color);
-    margin: 0.5rem auto;
+    width: 100px;
+    height: 5px;
+    background: linear-gradient(90deg, var(--highlight-primary), var(--highlight-secondary));
+    margin: 1rem auto;
+    border-radius: 3px;
 }
 
-/* Header with adjusted gradient opacity */
+/* ===== Header ===== */
 header {
     background: 
         linear-gradient(135deg, rgba(44, 62, 80, 0.3), rgba(20, 30, 40, 0.5)),
@@ -97,6 +138,7 @@ header {
     color: white;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .bg-credit {
@@ -107,7 +149,6 @@ header {
     font-size: 0.7rem;
     text-shadow: 0 1px 2px rgba(0,0,0,0.5);
     z-index: 10;
-    transition: opacity 0.3s ease;
 }
 
 .bg-credit a {
@@ -116,15 +157,11 @@ header {
     border-bottom: 1px dotted rgba(255,255,255,0.5);
 }
 
-.bg-credit a:hover {
-    color: white;
-    border-bottom-color: white;
-}
-
 nav {
-    padding: 1.5rem 2rem;
+    padding: 2rem;
     display: flex;
     justify-content: flex-end;
+    z-index: 5;
 }
 
 nav ul {
@@ -136,10 +173,28 @@ nav a {
     color: white;
     font-weight: 500;
     transition: all 0.3s ease;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--highlight-primary);
+    transition: width 0.3s ease;
 }
 
 nav a:hover {
-    color: white;
+    color: var(--highlight-primary);
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 .hero {
@@ -150,25 +205,37 @@ nav a:hover {
     align-items: center;
     text-align: center;
     padding: 2rem;
+    position: relative;
+    z-index: 2;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 4.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    background: linear-gradient(90deg, #FF9F1C, #FFBF69);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .subtitle {
-    font-size: 1.5rem;
-    opacity: 0.9;
+    font-size: 1.6rem;
+    opacity: 0.95;
     max-width: 700px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    font-weight: 300;
+    letter-spacing: 0.02em;
 }
 
-/* About Section */
+/* ===== About Section ===== */
 .about-content {
     display: flex;
-    gap: 3rem;
+    gap: 4rem;
     align-items: center;
 }
 
@@ -177,17 +244,18 @@ nav a:hover {
 }
 
 .about-text p {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     font-size: 1.1rem;
     line-height: 1.8;
 }
 
 .skills {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
 }
 
 .skills h3 {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
 }
 
 .skills ul {
@@ -198,8 +266,16 @@ nav a:hover {
 
 .skills li {
     background: var(--light-color);
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.2rem;
     border-radius: 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.skills li:hover {
+    background: var(--highlight-primary);
+    color: white;
+    transform: translateY(-2px);
 }
 
 .about-image {
@@ -210,55 +286,71 @@ nav a:hover {
 }
 
 .profile-image {
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid var(--light-color);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 8px solid var(--light-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s ease;
 }
 
-/* Projects Section */
+.profile-image:hover {
+    transform: scale(1.03) rotate(2deg);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Projects Section ===== */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
 }
 
 .project-card {
     background: white;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .project-image {
-    height: 200px;
-    background: #eee;
+    height: 220px;
     position: relative;
+    overflow: hidden;
 }
 
-.placeholder-project {
+.project-image img {
     width: 100%;
     height: 100%;
-    background: #ddd;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
 }
 
 .project-card h3 {
-    padding: 1rem 1.5rem 0;
-    margin-bottom: 0.5rem;
+    padding: 1.5rem 1.5rem 0;
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+    color: var(--secondary-color);
 }
 
 .project-card p {
     padding: 0 1.5rem;
     color: var(--text-light);
     margin-bottom: 1.5rem;
+    line-height: 1.6;
 }
 
 .project-links {
@@ -267,55 +359,17 @@ nav a:hover {
     gap: 1rem;
 }
 
-/* Contact Section */
-.contact-content {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.contact-content p {
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-}
-
-.social-links {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-.social-links a {
-    color: var(--dark-color);
-    font-size: 1.5rem;
-    transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-    color: var(--primary-color);
-    transform: scale(1.2);
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 2rem;
-    background: var(--dark-color);
-    color: white;
-}
-
-/* Art Section */
+/* ===== Art Section ===== */
 .art-category {
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
 
 .art-category h3 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: var(--secondary-color);
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     position: relative;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.8rem;
 }
 
 .art-category h3::after {
@@ -323,49 +377,122 @@ footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 60px;
-    height: 3px;
-    background: var(--primary-color);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--highlight-primary), var(--highlight-tertiary));
+    border-radius: 2px;
 }
 
 .art-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
 .art-item {
     background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
 }
 
 .art-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
 .art-item img {
     width: 100%;
-    height: 200px;
+    height: 240px;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.art-item:hover img {
+    transform: scale(1.03);
 }
 
 .art-item p {
-    padding: 1rem;
+    padding: 1.2rem;
     text-align: center;
     font-weight: 500;
+    color: var(--secondary-color);
 }
 
-/* Responsive Design */
+/* ===== Contact Section ===== */
+.contact-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-content p {
+    margin-bottom: 2.5rem;
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+.social-links {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.social-links a {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.social-links a:hover {
+    color: white;
+    background: var(--highlight-primary);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Footer ===== */
+footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--dark-color);
+    color: white;
+}
+
+footer p {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 3.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1.4rem;
+    }
+}
+
 @media (max-width: 768px) {
     .about-content {
         flex-direction: column;
+        gap: 3rem;
     }
     
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 3.2rem;
     }
     
     .subtitle {
@@ -373,21 +500,38 @@ footer {
     }
     
     nav ul {
-        gap: 1rem;
+        gap: 1.5rem;
     }
     
+    .section h2 {
+        font-size: 2.4rem;
+    }
+    
+    .projects-grid,
     .art-gallery {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
     .section {
-        padding: 3rem 1rem;
+        padding: 4rem 1.5rem;
     }
     
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    nav {
+        padding: 1.5rem;
+    }
+    
+    nav ul {
+        gap: 1rem;
     }
     
     .project-links {
@@ -396,10 +540,10 @@ footer {
     
     .btn {
         width: 100%;
-        text-align: center;
     }
     
-    .art-gallery {
-        grid-template-columns: 1fr;
+    .profile-image {
+        width: 250px;
+        height: 250px;
     }
 }
