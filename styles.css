@@ -87,7 +87,7 @@ ul {
 /* Header with adjusted gradient opacity */
 header {
     background: 
-        linear-gradient(135deg, rgba(44, 62, 80, 0.4), rgba(20, 30, 40, 0.6)),
+        linear-gradient(135deg, rgba(44, 62, 80, 0.3), rgba(20, 30, 40, 0.5)),
         url('HohenZollern.jpg') center/cover no-repeat;
     background-attachment: fixed;
     background-color: var(--dark-color);
