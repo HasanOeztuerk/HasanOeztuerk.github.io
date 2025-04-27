@@ -84,9 +84,14 @@ ul {
     margin: 0.5rem auto;
 }
 
-/* Header Styles */
+
 header {
-    background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
+    background-image: url('path/to/your-image.jpg');
+    background-color: var(linear-gradient(135deg, var(--secondary-color), var(--dark-color))); /* Fallback if image fails to load */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay; /* Optional: blends image with gradient */
     color: white;
     min-height: 100vh;
     display: flex;
