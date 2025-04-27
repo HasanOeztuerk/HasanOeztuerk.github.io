@@ -86,12 +86,9 @@ ul {
 
 
 header {
-    background-image: url('HohenZollern.png');
-    background-color: var(linear-gradient(135deg, var(--secondary-color), var(--dark-color))); /* Fallback if image fails to load */
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-blend-mode: overlay; /* Optional: blends image with gradient */
+    background: 
+        linear-gradient(135deg, rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.9)),
+        url('HohenZollern.png') center/cover no-repeat;
     color: white;
     min-height: 100vh;
     display: flex;
