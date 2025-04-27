@@ -87,12 +87,13 @@ ul {
 
 header {
     background: 
-        linear-gradient(135deg, rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.9)),
+        linear-gradient(135deg, rgba(44, 62, 80, 0.85), rgba(20, 30, 40, 0.9)),
         url('HohenZollern.jpg') center/cover no-repeat;
-    color: white;
+    background-attachment: fixed; /* Optional: Creates parallax effect */
+    background-color: var(--dark-color); /* Fallback color */
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+    overflow: hidden; /* Hides any overflow from the image */
 }
 
 nav {
