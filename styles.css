@@ -86,7 +86,7 @@ ul {
 
 /* Header Styles */
 header {
-    background: blue;
+    background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
     color: white;
     min-height: 100vh;
     display: flex;
