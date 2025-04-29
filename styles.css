@@ -317,21 +317,22 @@ nav a:hover::after {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 2.5rem;
-    margin-top: 3rem;
+    align-items: stretch; /* Ensures all cards stretch to same height */
 }
 
 .project-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Takes full height of grid cell */
     background: white;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     transition: all 0.4s ease;
-    position: relative;
 }
 
-.project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+.project-card > *:not(.project-links) {
+    flex: 0 0 auto; /* Prevents stretching */
 }
 
 .project-image {
@@ -366,6 +367,7 @@ nav a:hover::after {
 }
 
 .project-links {
+    margin-top: auto; /* Pushes to bottom */
     padding: 0 1.5rem 1.5rem;
     display: flex;
     gap: 1rem;
