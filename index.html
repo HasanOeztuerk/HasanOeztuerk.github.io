@@ -155,14 +155,14 @@
             </div>
         </div>
     </section>
-    
+
      <section id="art" class="section">
         <h2>Art</h2>
         <div class="art-category">
             <h3>Sketches and Models</h3>
             <div class="art-gallery">
                 <div class="art-item">
-                    <img src="StudyHead.jpg" alt="Sketch 1">
+                    <img src="StudyHead.jpg" alt="Colour Study (eleeza)" onclick="openLightbox(this)">
                     <p>Colour Study (eleeza)</p>
                 </div>
                 <div class="art-item">
@@ -215,5 +215,40 @@
         // Simple script to update the year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="caption"></div>
+    </div>
+    <script>
+    // Lightbox functionality
+    function openLightbox(element) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const captionText = document.getElementById('caption');
+        
+        lightbox.style.display = "block";
+        lightboxImg.src = element.src;
+        captionText.innerHTML = element.alt;
+    }
+    
+    // Close lightbox when clicking X or outside image
+    document.querySelector('.close-btn').onclick = function() {
+        document.getElementById('lightbox').style.display = "none";
+    }
+    
+    document.getElementById('lightbox').onclick = function(event) {
+        if (event.target === this) {
+            this.style.display = "none";
+        }
+    }
+    
+    // Close with ESC key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") {
+            document.getElementById('lightbox').style.display = "none";
+        }
+    });
+</script>
 </body>
 </html>
