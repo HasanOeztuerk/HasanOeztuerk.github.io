@@ -382,10 +382,10 @@ nav a:hover::after {
 .certificate-card {
     background: white;
     border-radius: 8px;
-    overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     display: flex;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
 }
 
 .certificate-card:hover {
@@ -405,6 +405,16 @@ nav a:hover::after {
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
+}
+
+.certificate-icon {
+    width: 40%;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 4rem;
 }
 
 .certificate-overlay {
@@ -446,6 +456,7 @@ nav a:hover::after {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .certificate-details h3 {
@@ -482,21 +493,19 @@ nav a:hover::after {
     color: var(--text-color);
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .certificate-card {
-        flex-direction: column;
-    }
-    
-    .certificate-image,
-    .certificate-details {
-        width: 100%;
-    }
-    
-    .certificate-image {
-        height: 200px;
-    }
+.verify-btn {
+    margin-top: 1.5rem;
+    align-self: flex-start;
+    background: var(--highlight-primary);
+    border-color: var(--highlight-primary);
 }
+
+.verify-btn:hover {
+    background: var(--highlight-primary);
+    border-color: var(--highlight-primary);
+}
+
+
 
 /* ===== Art Section ===== */
 .art-category {
@@ -746,5 +755,25 @@ footer p {
     .profile-image {
         width: 250px;
         height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .certificate-card {
+        flex-direction: column;
+    }
+    
+    .certificate-icon,
+    .certificate-details {
+        width: 100%;
+    }
+    
+    .certificate-icon {
+        height: 150px;
+        font-size: 3rem;
+    }
+    
+    .verify-btn {
+        align-self: center;
     }
 }
