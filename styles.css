@@ -1,6 +1,5 @@
-/* ===== Base Styles ===== */
+
 :root {
-    /* Color Palette */
     --primary-color: #3498db;
     --secondary-color: #2c3e50;
     --accent-color: #e74c3c;
@@ -9,11 +8,10 @@
     --text-color: #333;
     --text-light: #7f8c8d;
     
-    /* New Highlight Colors */
-    --highlight-primary: #FF9F1C; /* Warm orange */
-    --highlight-secondary: #2EC4B6; /* Teal */
-    --highlight-tertiary: #E07A5F; /* Terra cotta */
-}
+
+    --highlight-primary: #FF9F1C;
+    --highlight-secondary: #2EC4B6; 
+    --highlight-tertiary: #E07A5F;
 
 * {
     margin: 0;
@@ -37,7 +35,6 @@ ul {
     list-style: none;
 }
 
-/* ===== Typography ===== */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
 h1, h2, h3 {
@@ -382,11 +379,6 @@ video {
     transition: all 0.3s ease;
 }
 
-.project-card:hover video {
-    transform: scale(1.02);
-}
-
-/* Certificates Section */
 .certificates-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -520,9 +512,6 @@ video {
     border-color: var(--highlight-primary);
 }
 
-
-
-/* ===== Art Section ===== */
 .art-category {
     margin-bottom: 4rem;
 }
@@ -583,7 +572,6 @@ video {
     color: var(--secondary-color);
 }
 
-/* Lightbox Styles */
 .lightbox {
     display: none;
     position: fixed;
