@@ -25,6 +25,17 @@ body {
     background-color: #f9f9f9;
 }
 
+.about-text p, .project-card p, .certificate-details p, .contact-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+/* Or more generally for all content paragraphs */
+.section p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
 a {
     text-decoration: none;
     color: var(--primary-color);
@@ -33,6 +44,26 @@ a {
 ul {
     list-style: none;
 }
+
+/* Regular content list styles */
+.content-list {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+    list-style-type: disc;
+}
+
+.content-list li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.content-list strong {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+
 
 /* Certificate List Styles */
 .certificate-list {
